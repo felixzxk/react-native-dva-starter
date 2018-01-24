@@ -1,27 +1,27 @@
-import React, { Component } from 'react'
-import { StyleSheet, View, Text, ActivityIndicator } from 'react-native'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { StyleSheet, View, Text, ActivityIndicator } from 'react-native';
+import { connect } from 'react-redux';
 
-import { Button, Touchable } from '../components'
+import { Button, Touchable } from '../components';
 
-import { createAction, NavigationActions } from '../utils'
+import { createAction, NavigationActions } from '../utils';
 
 @connect(({ app }) => ({ ...app }))
 class Login extends Component {
   static navigationOptions = {
-    title: 'Login',
-  }
+    title: 'Login'
+  };
 
   onLogin = () => {
-    this.props.dispatch(createAction('app/login')())
-  }
+    this.props.dispatch(createAction('app/login')());
+  };
 
   onClose = () => {
-    this.props.dispatch(NavigationActions.back())
-  }
+    this.props.dispatch(NavigationActions.back());
+  };
 
   render() {
-    const { fetching } = this.props
+    const { fetching } = this.props;
     return (
       <View style={styles.container}>
         {fetching ? (
@@ -35,7 +35,7 @@ class Login extends Component {
           </Touchable>
         )}
       </View>
-    )
+    );
   }
 }
 
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'center'
   },
   close: {
     position: 'absolute',
     right: 20,
-    top: 40,
-  },
-})
+    top: 40
+  }
+});
 
-export default Login
+export default Login;
