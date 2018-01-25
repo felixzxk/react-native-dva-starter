@@ -5,7 +5,7 @@ import {
   TabNavigator,
   TabBarBottom,
   addNavigationHelpers,
-  NavigationActions,
+  NavigationActions
 } from 'react-navigation';
 import { connect } from 'react-redux';
 
@@ -21,43 +21,43 @@ const HomeNavigator = TabNavigator(
     Home: { screen: Home },
     Mission: { screen: Mission, path: '/mission' },
     Account2: { screen: Account },
-    Account1: { screen: Account },
+    Account1: { screen: Account }
   },
   {
     tabBarComponent: TabBarBottom,
     tabBarPosition: 'bottom',
     swipeEnabled: true,
     animationEnabled: true,
-    lazyLoad: true,
+    lazyLoad: true
   }
 );
 
 const MainNavigator = StackNavigator(
   {
     HomeNavigator: { screen: HomeNavigator },
-    Detail: { screen: Detail },
+    Detail: { screen: Detail }
   },
   {
-    headerMode: 'float',
+    headerMode: 'float'
   }
 );
 
 const AppNavigator = StackNavigator(
   {
     Main: { screen: MainNavigator },
-    Login: { screen: Login },
+    Login: { screen: Login }
   },
   {
     headerMode: 'none',
     mode: 'modal',
     navigationOptions: {
-      gesturesEnabled: false,
+      gesturesEnabled: false
     },
     transitionConfig: () => ({
       transitionSpec: {
         duration: 300,
         easing: Easing.out(Easing.poly(4)),
-        timing: Animated.timing,
+        timing: Animated.timing
       },
       screenInterpolator: sceneProps => {
         const { layout, position, scene } = sceneProps;
@@ -66,17 +66,17 @@ const AppNavigator = StackNavigator(
         const height = layout.initHeight;
         const translateY = position.interpolate({
           inputRange: [index - 1, index, index + 1],
-          outputRange: [height, 0, 0],
+          outputRange: [height, 0, 0]
         });
 
         const opacity = position.interpolate({
           inputRange: [index - 1, index - 0.99, index],
-          outputRange: [0, 1, 1],
+          outputRange: [0, 1, 1]
         });
 
         return { opacity, transform: [{ translateY }] };
-      },
-    }),
+      }
+    })
   }
 );
 
@@ -111,7 +111,7 @@ class Router extends PureComponent {
       return true;
     }
     return false;
-  }
+  };
 
   render() {
     const { dispatch, app, router } = this.props;

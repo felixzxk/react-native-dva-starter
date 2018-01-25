@@ -8,7 +8,6 @@ import { NavigationActions } from '../utils';
 
 @connect()
 class Home extends Component {
-
   static navigationOptions = {
     title: '导航栏标题',
     tabBarLabel: '首页',

@@ -12,20 +12,20 @@ class Missions extends Component {
   static navigationOptions = {
     title: 'Missions',
     tabBarLabel: '任务列表',
-    tabBarIcon: tabIcon('book')
-  };
+    tabBarIcon: tabIcon('book'),
+  }
 
   componentWillMount() {
     console.log('componentWillMount+++', this.props);
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     console.log('componentWillUnmount---', this.props);
   }
 
   gotoDetail = () => {
     this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }));
-  };
+  }
 
   render() {
     return (

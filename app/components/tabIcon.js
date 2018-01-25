@@ -4,8 +4,8 @@ import { Image, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   icon: {
     width: 24,
-    height: 24
-  }
+    height: 24,
+  },
 });
 
 const LIST = require('../images/mission.png');
@@ -30,12 +30,12 @@ function sourceSelect(type) {
 
 export default (type, mytintColor, color = 'gray') => ({
   focused,
-  tintColor
+  tintColor,
 }) => (
   <Image
     style={[
       styles.icon,
-      { tintColor: focused ? mytintColor || tintColor : color }
+      { tintColor: focused ? mytintColor || tintColor : color },
     ]}
     source={sourceSelect(type)}
   />

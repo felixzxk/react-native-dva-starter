@@ -6,12 +6,12 @@ export default {
   state: {
     login: false,
     loading: true,
-    fetching: false
+    fetching: false,
   },
   reducers: {
     updateState(state, { payload }) {
       return { ...state, ...payload };
-    }
+    },
   },
   effects: {
     *loadStorage(action, { call, put }) {
@@ -25,7 +25,7 @@ export default {
         yield put(
           NavigationActions.reset({
             index: 0,
-            actions: [NavigationActions.navigate({ routeName: 'Main' })]
+            actions: [NavigationActions.navigate({ routeName: 'Main' })],
           })
         );
       }
@@ -35,12 +35,12 @@ export default {
     *logout(action, { call, put }) {
       yield call(Storage.set, 'login', false);
       yield put(createAction('updateState')({ login: false }));
-    }
+    },
   },
   subscriptions: {
     setup({ dispatch, ...other }) {
       console.log('subscriptions', other);
       dispatch({ type: 'loadStorage' });
-    }
-  }
+    },
+  },
 };
