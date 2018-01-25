@@ -38,7 +38,8 @@ export default {
     }
   },
   subscriptions: {
-    setup({ dispatch }) {
+    setup({ dispatch, ...other }) {
+      console.log('subscriptions', other);
       dispatch({ type: 'loadStorage' });
     }
   }

@@ -1,23 +1,31 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
+import styles from './styles';
 import { Button, tabIcon } from '../components';
 
 import { NavigationActions } from '../utils';
 
 @connect()
-class Home extends Component {
-
+class Missions extends Component {
   static navigationOptions = {
-    title: '导航栏标题',
-    tabBarLabel: '首页',
-    tabBarIcon: tabIcon('home'),
+    title: 'Missions',
+    tabBarLabel: '任务列表',
+    tabBarIcon: tabIcon('book')
+  };
+
+  componentWillMount() {
+    console.log('componentWillMount+++', this.props);
+  }
+
+  componentWillUnmount(){
+    console.log('componentWillUnmount---', this.props);
   }
 
   gotoDetail = () => {
     this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }));
-  }
+  };
 
   render() {
     return (
@@ -28,12 +36,4 @@ class Home extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
-export default Home;
+export default Missions;

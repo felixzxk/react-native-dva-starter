@@ -9,16 +9,16 @@ import { createAction, NavigationActions } from '../utils';
 @connect(({ app }) => ({ ...app }))
 class Login extends Component {
   static navigationOptions = {
-    title: 'Login'
-  };
+    title: 'Login',
+  }
 
   onLogin = () => {
     this.props.dispatch(createAction('app/login')());
-  };
+  }
 
   onClose = () => {
     this.props.dispatch(NavigationActions.back());
-  };
+  }
 
   render() {
     const { fetching } = this.props;
@@ -43,13 +43,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   close: {
     position: 'absolute',
     right: 20,
-    top: 40
-  }
+    top: 40,
+  },
 });
 
 export default Login;

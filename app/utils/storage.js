@@ -38,5 +38,5 @@ export default {
   set,
   remove,
   multiGet,
-  multiRemove
+  multiRemove,
 };

@@ -12,7 +12,7 @@ const app = dva({
   models: [appModel, routerModel],
   onError(e) {
     console.log('onError', e);
-  }
+  },
 });
 
 const App = app.start(<Router />);

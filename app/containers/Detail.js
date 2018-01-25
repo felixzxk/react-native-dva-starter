@@ -9,16 +9,16 @@ import { NavigationActions } from '../utils';
 @connect()
 class Detail extends Component {
   static navigationOptions = {
-    title: 'Detail'
-  };
+    title: 'Detail',
+  }
 
   gotoDetail = () => {
     this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }));
-  };
+  }
 
   goBack = () => {
     this.props.dispatch(NavigationActions.back({ routeName: 'Account' }));
-  };
+  }
 
   render() {
     return (
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 });
 
 export default Detail;
