@@ -7,7 +7,10 @@ import { Button, tabIcon } from '../components';
 
 import { NavigationActions } from '../utils';
 
-@connect()
+@connect(({ app, router }) => ({
+  app,
+  router,
+}))
 class Missions extends Component {
   static navigationOptions = {
     title: 'Missions',

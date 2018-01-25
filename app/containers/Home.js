@@ -4,9 +4,12 @@ import { connect } from 'react-redux';
 
 import { Button, tabIcon } from '../components';
 
-import { NavigationActions } from '../utils';
+import { NavigationActions, createAction } from '../utils';
 
-@connect()
+@connect(({ app, router }) => ({
+  app,
+  router,
+}))
 class Home extends Component {
   static navigationOptions = {
     title: '导航栏标题',
@@ -15,7 +18,12 @@ class Home extends Component {
   }
 
   gotoDetail = () => {
-    this.props.dispatch(NavigationActions.navigate({ routeName: 'Detail' }));
+    this.props.dispatch(
+      NavigationActions.navigate({
+        routeName: 'Detail',
+        action: createAction('app/testSubAction')(),
+      })
+    );
   }
 
   render() {

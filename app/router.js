@@ -44,8 +44,8 @@ const MainNavigator = StackNavigator(
 
 const AppNavigator = StackNavigator(
   {
-    Main: { screen: MainNavigator },
-    Login: { screen: Login },
+    Main: { screen: MainNavigator, path: '/main' },
+    Login: { screen: Login, path: '/login' },
   },
   {
     headerMode: 'none',
@@ -100,6 +100,9 @@ class Router extends PureComponent {
   componentWillUnmount() {
     BackHandler.removeEventListener('hardwareBackPress', this.backHandle);
   }
+  onNavigationStateChange = (pre, cur) => {
+    console.log('change', pre, cur);
+  }
 
   backHandle = () => {
     const currentScreen = getCurrentScreen(this.props.router);
@@ -112,12 +115,14 @@ class Router extends PureComponent {
     }
     return false;
   }
-
   render() {
     const { dispatch, app, router } = this.props;
     if (app.loading) return <Loading />;
-
-    const navigation = addNavigationHelpers({ dispatch, state: router });
+    const navigation = addNavigationHelpers({
+      dispatch,
+      state: router,
+      onNavigationStateChange: this.onNavigationStateChange,
+    });
     return <AppNavigator navigation={navigation} />;
   }
 }
